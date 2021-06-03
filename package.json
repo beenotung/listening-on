@@ -2,7 +2,8 @@
   "name": "listening-on",
   "version": "1.0.0",
   "description": "Get local and network ip address",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "clean": "rimraf dist",
     "tsc": "tsc",
