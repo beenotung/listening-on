@@ -10,7 +10,13 @@
     "test": "ts-node test",
     "build": "run-s clean tsc"
   },
-  "keywords": [],
+  "keywords": [
+    "port",
+    "dev tool",
+    "running-at",
+    "console",
+    "report"
+  ],
   "author": {
     "name": "Beeno Tung",
     "email": "aabbcc1241@yahoo.com.hk",
