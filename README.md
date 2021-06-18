@@ -6,7 +6,7 @@ Get local and network ip address
 
 Plain node.js alternative to [running-at](https://www.npmjs.com/package/running-at).
 
-This package doesn't rely on `execa`, hence more portable.
+This package doesn't rely on `execa` and `ip`, hence more portable.
 
 ## Installation
 ```bash
