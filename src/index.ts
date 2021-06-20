@@ -3,10 +3,14 @@ import * as os from 'os'
 export type PrintOptions = {
   port: number
   // default http
-  protocol?: 'http' | 'https' | 'ws' | 'wss' | 'tcp' | 'udp' | string
+  protocol?: Protocol | string
   // default IPv4
-  family?: 'IPv4' | 'IPv6' | 'all'
+  family?: Family | 'all'
 }
+
+export type Protocol = 'http' | 'https' | 'ws' | 'wss' | 'tcp' | 'udp'
+
+export type Family = 'IPv4' | 'IPv6'
 
 export function print(port_or_options: number | PrintOptions) {
   if (!port_or_options) {

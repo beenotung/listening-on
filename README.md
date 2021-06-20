@@ -36,8 +36,25 @@ listening on http://127.0.0.1:8100 (lo)
 listening on http://192.168.59.46:8100 (wlp3s0)
     */
 })
-
 ```
+
+## Typescript Signature
+```typescript
+export function print(port_or_options: number | PrintOptions): void;
+
+export type PrintOptions = {
+  port: number
+  // default http
+  protocol?: Protocol | string
+  // default IPv4
+  family?: Family | 'all'
+}
+
+export type Protocol = 'http' | 'https' | 'ws' | 'wss' | 'tcp' | 'udp'
+
+export type Family = 'IPv4' | 'IPv6'
+```
+
 ## License
 This is free and open-source software (FOSS) with
 [BSD-2-Clause License](./LICENSE)
