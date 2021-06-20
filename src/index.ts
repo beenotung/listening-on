@@ -1,10 +1,21 @@
 import * as os from 'os'
 
-export function print(
-  port: number,
-  protocol: string = 'http',
-  family: 'IPv4' | 'IPv6' | 'all' = 'IPv4',
-) {
+export type PrintOptions = {
+  port: number
+  // default http
+  protocol?: 'http' | 'https' | 'ws' | 'wss' | 'tcp' | 'udp' | string
+  // default IPv4
+  family?: 'IPv4' | 'IPv6' | 'all'
+}
+
+export function print(port_or_options: number | PrintOptions) {
+  const options: PrintOptions =
+    typeof port_or_options === 'number'
+      ? { port: port_or_options }
+      : port_or_options
+  const port = options.port
+  const protocol = options.protocol || 'http'
+  const family: Required<PrintOptions>['family'] = options.family || 'IPv4'
   const showIPv4 = family === 'IPv4' || family === 'all'
   const showIPv6 = family === 'IPv6' || family === 'all'
   let ifaces = os.networkInterfaces()
