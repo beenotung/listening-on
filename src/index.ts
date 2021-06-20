@@ -9,6 +9,9 @@ export type PrintOptions = {
 }
 
 export function print(port_or_options: number | PrintOptions) {
+  if (!port_or_options) {
+    throw new TypeError('missing port or options')
+  }
   const options: PrintOptions =
     typeof port_or_options === 'number'
       ? { port: port_or_options }
