@@ -11,6 +11,7 @@ Plain node.js alternative to [running-at](https://www.npmjs.com/package/running-
 This package doesn't rely on `execa` and `ip`, hence more portable.
 
 ## Installation
+
 ```bash
 ## with npm
 npm i listening-on
@@ -23,6 +24,9 @@ yarn add listening-on
 ```
 
 ## Usage Example
+
+Named import example:
+
 ```typescript
 import express from 'express'
 import { print } from 'listening-on'
@@ -41,9 +45,21 @@ listening on http://192.168.59.46:8100 (wlp3s0)
 })
 ```
 
-## Typescript Signature
+commonjs compatible import example:
+
 ```typescript
-export function print(port_or_options: number | PrintOptions): void;
+import * as listeningOn from 'listening-on'
+
+listeningOn.print(PORT)
+
+// or simply use require
+require('listening-on').print(PORT)
+```
+
+## Typescript Signature
+
+```typescript
+export function print(port_or_options: number | PrintOptions): void
 
 export type PrintOptions = {
   port: number
@@ -59,5 +75,6 @@ export type Family = 'IPv4' | 'IPv6'
 ```
 
 ## License
+
 This is free and open-source software (FOSS) with
 [BSD-2-Clause License](./LICENSE)
