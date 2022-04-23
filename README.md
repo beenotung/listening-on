@@ -2,7 +2,9 @@
 
 Get local and network ip address
 
-[![npm Package Version](https://img.shields.io/npm/v/listening-on.svg?maxAge=3600)](https://www.npmjs.com/package/listening-on)
+[![npm Package Version](https://img.shields.io/npm/v/listening-on)](https://www.npmjs.com/package/listening-on)
+[![npm Package Version](https://img.shields.io/bundlephobia/min/listening-on)](https://bundlephobia.com/package/listening-on)
+[![npm Package Version](https://img.shields.io/npm/dy/listening-on)](https://www.npmtrends.com/listening-on)
 
 Plain node.js alternative to [running-at](https://www.npmjs.com/package/running-at).
 
