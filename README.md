@@ -23,15 +23,16 @@ yarn add listening-on
 ## Usage Example
 ```typescript
 import express from 'express'
-import * as listeningOn from 'listening-on'
+import { print } from 'listening-on'
 
-const PORT = process.env.PORT || 3000
+const PORT = +process.env.PORT! || 3000
 const app = express()
+
 app.use(express.static('public'))
 
 app.listen(PORT, () => {
-    listeningOn(PORT)
-    /* will print out below lines:
+  print(PORT)
+  /* will print out below lines:
 listening on http://127.0.0.1:8100 (lo)
 listening on http://192.168.59.46:8100 (wlp3s0)
     */
