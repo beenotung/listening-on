@@ -1,6 +1,6 @@
 {
   "name": "listening-on",
-  "version": "2.0.5",
+  "version": "2.0.6",
   "description": "Print server url with local and network ip address",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
