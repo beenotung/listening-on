@@ -15,7 +15,8 @@
     "dev tool",
     "running-at",
     "console",
-    "report"
+    "report",
+    "typescript"
   ],
   "author": {
     "name": "Beeno Tung",
