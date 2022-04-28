@@ -1,6 +1,6 @@
 # listening-on
 
-Get local and network ip address
+Print server url with local and network ip address
 
 [![npm Package Version](https://img.shields.io/npm/v/listening-on)](https://www.npmjs.com/package/listening-on)
 [![npm Package Version](https://img.shields.io/bundlephobia/min/listening-on)](https://bundlephobia.com/package/listening-on)
