@@ -22,6 +22,9 @@ export function print(port_or_options: number | PrintOptions) {
       : port_or_options
   const port = options.port
   const protocol = options.protocol || 'http'
+
+  console.log(`listening on ${protocol}://localhost:${port}`)
+
   const family: Required<PrintOptions>['family'] = options.family || 'IPv4'
   const showIPv4 = family === 'IPv4' || family === 'all'
   const showIPv6 = family === 'IPv6' || family === 'all'
