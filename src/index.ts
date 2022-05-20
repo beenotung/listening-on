@@ -28,17 +28,13 @@ export function print(port_or_options: number | PrintOptions) {
   const family: Required<PrintOptions>['family'] = options.family || 'IPv4'
   const showIPv4 = family === 'IPv4' || family === 'all'
   const showIPv6 = family === 'IPv6' || family === 'all'
-  const ifaces = networkInterfaces()
-  Object.entries(ifaces).forEach(([name, ifaces]) => {
-    ifaces?.forEach(iface => {
-      let { address, family } = iface
-      if (address.startsWith('::')) {
-        return
-      }
+  Object.entries(networkInterfaces()).forEach(([name, addresses]) => {
+    addresses?.forEach(address => {
+      const { address: host, family } = address
       if (family === 'IPv4' && showIPv4) {
-        console.log(`listening on ${protocol}://${address}:${port} (${name})`)
+        console.log(`listening on ${protocol}://${host}:${port} (${name})`)
       } else if (family === 'IPv6' && showIPv6) {
-        console.log(`listening on ${protocol}://[${address}]:${port} (${name})`)
+        console.log(`listening on ${protocol}://[${host}]:${port} (${name})`)
       }
     })
   })
