@@ -1,12 +1,12 @@
 # listening-on
 
-Print server url with local and network ip address
+Discover local and network interface addresses and print friendly URLs for your services.
 
 [![npm Package Version](https://img.shields.io/npm/v/listening-on)](https://www.npmjs.com/package/listening-on)
 [![npm Package Version](https://img.shields.io/bundlephobia/min/listening-on)](https://bundlephobia.com/package/listening-on)
 [![npm Package Version](https://img.shields.io/npm/dy/listening-on)](https://www.npmtrends.com/listening-on)
 
-Plain node.js alternative to [running-at](https://www.npmjs.com/package/running-at).
+Plain node.js alternative to [running-at](https://www.npmjs.com/package/running-at) with reusable network interface discovery.
 
 This package doesn't rely on `execa` and `ip`, hence more portable.
 
@@ -24,6 +24,8 @@ yarn add listening-on
 ```
 
 ## Usage Example
+
+### Print web server URLs
 
 Named import example:
 
@@ -56,10 +58,33 @@ listeningOn.print(PORT)
 require('listening-on').print(PORT)
 ```
 
-## Typescript Signature
+### Reuse the discovered addresses
+
+```typescript
+import { scan_host } from 'listening-on'
+
+scan_host({
+  family: 'all',
+  onAddress: ({ host }) => {
+    // do something with the address
+    appendToCaddyFile(host)
+  },
+})
+```
+
+Possible use cases:
+
+- Print service URLs to the console for development.
+- Generate upstream entries for a Caddyfile automatically.
+- Feed bootstrap peers into a P2P network discovery list.
+- Pre-populate environment configs or service discovery registries with your live IPs.
+
+## API Reference (TypeScript)
 
 ```typescript
 export function print(port_or_options: number | PrintOptions): void
+
+export function scan_host(options: ScanOptions): void
 
 export type PrintOptions = {
   port: number
@@ -72,6 +97,19 @@ export type PrintOptions = {
 export type Protocol = 'http' | 'https' | 'ws' | 'wss' | 'tcp' | 'udp'
 
 export type Family = 'IPv4' | 'IPv6'
+
+export type ScanOptions = {
+  // default IPv4
+  family?: Family | 'all'
+  onAddress: (address: {
+    /** interface name, e.g. lo, wlp3s0 */
+    name: string
+    /** ip address, e.g. 127.0.0.1, 192.168.59.46 */
+    host: string
+    /** ip family, e.g. IPv4, IPv6 */
+    family: Family
+  }) => void
+}
 ```
 
 ## License
